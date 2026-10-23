@@ -1,0 +1,288 @@
+.modal-layer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+}
+
+.modal-slot {
+  position: absolute;
+  inset: 0;
+}
+
+.modal-slot[inert] {
+  pointer-events: none;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+}
+
+.xp-dialog {
+  position: absolute;
+  max-width: calc(100vw - 8px);
+  max-height: calc(100vh - 8px);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.modal-layer.is-flashing .modal-slot:last-child .xp-dialog .xp-window__titlebar {
+  filter: saturate(0.4) brightness(1.2);
+}
+
+.xp-dialog__body {
+  padding: 12px 12px 10px;
+  background: var(--c-face);
+  overflow: auto;
+}
+
+.xp-dialog .xp-window__titlebar {
+  cursor: default;
+}
+
+.msgbox {
+  min-width: 300px;
+  max-width: min(480px, calc(100vw - 8px));
+}
+
+.msgbox__content {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 4px 6px 14px;
+}
+
+.msgbox__text p {
+  margin: 0 0 8px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.msgbox__detail {
+  color: #333;
+}
+
+.run-dialog__intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.run-dialog__intro p {
+  margin: 0;
+  line-height: 1.35;
+}
+
+.run-dialog__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.run-dialog__row .xp-input {
+  flex: 1;
+}
+
+.browse-dialog__prompt {
+  margin: 0 0 8px;
+}
+
+.browse-dialog__tree {
+  height: 220px;
+  margin-bottom: 8px;
+  border: 1px solid var(--c-input-border);
+  background: #fff;
+  overflow: auto;
+}
+
+.field-error {
+  margin: 4px 0 8px;
+  padding: 4px 6px;
+  border: 1px solid #c00;
+  background: #fff4f4;
+  color: #900;
+}
+
+.prompt-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.organize__intro {
+  margin: 0 0 8px;
+}
+
+.organize__body {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.organize__list {
+  flex: 1;
+  height: 140px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--c-input-border);
+  background: #fff;
+  overflow: auto;
+}
+
+.organize__list li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 4px;
+  outline: none;
+}
+
+.organize__list li.is-selected {
+  background: var(--c-select);
+  color: #fff;
+}
+
+.organize__list li:focus-visible {
+  outline: 1px dotted #000;
+}
+
+.organize__empty {
+  color: #666;
+}
+
+.organize__missing {
+  font-style: italic;
+}
+
+.organize__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about__banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: -12px -12px 12px;
+  padding: 14px;
+  background: linear-gradient(90deg, #0c3d9a, #3a7df0);
+  color: #fff;
+}
+
+.about__banner strong {
+  font: bold 16px 'Trebuchet MS', Tahoma, sans-serif;
+}
+
+.about__text p {
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+/* ---------------------------------------------------------------- Turn Off / Log Off */
+
+.session-dialog {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 312px;
+  max-width: calc(100vw - 16px);
+  transform: translate(-50%, -50%);
+  border: 1px solid #0a246a;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.session-dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 46px;
+  padding: 0 10px 0 14px;
+  background: linear-gradient(180deg, #0a246a, #13369c);
+  color: #fff;
+}
+
+.session-dialog__header h2 {
+  margin: 0;
+  font: 16px 'Trebuchet MS', Tahoma, Arial, sans-serif;
+}
+
+.session-dialog__body {
+  display: flex;
+  justify-content: space-around;
+  gap: 8px;
+  padding: 22px 12px;
+  border-top: 2px solid;
+  border-image: linear-gradient(90deg, #13369c, #9cc1f4 50%, #13369c) 1;
+  background: linear-gradient(180deg, #3d5ec4 0%, #4466c8 100%);
+}
+
+.session-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 80px;
+  padding: 4px;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: #fff;
+  font-size: var(--fs-ui);
+}
+
+.session-btn__orb {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.session-btn--standby .session-btn__orb {
+  background: linear-gradient(180deg, #ffd96b, #e09a10);
+}
+
+.session-btn--off .session-btn__orb {
+  background: linear-gradient(180deg, #ff8a5c, #c5260b);
+}
+
+.session-btn--restart .session-btn__orb {
+  background: linear-gradient(180deg, #8de06a, #2b9b2b);
+}
+
+.session-btn--switch .session-btn__orb,
+.session-btn--logoff .session-btn__orb {
+  background: linear-gradient(180deg, #ffd96b, #e09a10);
+}
+
+.session-btn:hover:not(.is-disabled) .session-btn__orb,
+.session-btn:focus-visible .session-btn__orb {
+  filter: brightness(1.15);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6);
+}
+
+.session-btn:focus-visible {
+  outline: 1px dotted #fff;
+}
+
+.session-btn.is-disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.session-dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 12px;
+  background: linear-gradient(180deg, #0a246a, #13369c);
+}

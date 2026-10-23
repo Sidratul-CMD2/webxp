@@ -1,0 +1,267 @@
+/* Luna window frame: saturated blue when active, softer blue when inactive. */
+
+.xp-window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  padding: 0 var(--frame) var(--frame);
+  border: 1px solid var(--c-frame-active-edge);
+  border-top: 0;
+  border-radius: 8px 8px 0 0;
+  background: var(--c-frame-active);
+  outline: none;
+}
+
+.xp-window.is-inactive {
+  border-color: var(--c-frame-inactive-edge);
+  background: var(--c-frame-inactive);
+}
+
+.xp-window.is-filled {
+  border-radius: 0;
+}
+
+.xp-window[hidden] {
+  display: none;
+}
+
+.xp-window.is-move-size {
+  outline: 2px dashed #fff;
+  outline-offset: 2px;
+}
+
+.xp-window__titlebar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+  height: var(--title-h);
+  margin: 0 calc(-1 * var(--frame));
+  padding: 0 5px 0 6px;
+  border-radius: 7px 7px 0 0;
+  background: linear-gradient(
+    180deg,
+    #0a5ef3 0,
+    #3a8ffe 4%,
+    #2a85fd 8%,
+    #1475fc 12%,
+    #0466f6 18%,
+    #015bee 28%,
+    #0055e7 45%,
+    #0056ea 70%,
+    #005df3 82%,
+    #0066fe 90%,
+    #0060f5 95%,
+    #0a4ed6 100%
+  );
+  box-shadow: inset 1px 0 0 #3c8cff, inset -1px 0 0 #0a3fc4;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.xp-window.is-filled .xp-window__titlebar {
+  border-radius: 0;
+}
+
+.xp-window.is-inactive .xp-window__titlebar {
+  background: linear-gradient(180deg, #7a96df 0, #a6c0f3 5%, #9cb6ef 15%, #94afec 45%, #97b2ee 75%, #9db8f3 90%, #8aa5e6 100%);
+  box-shadow: inset 1px 0 0 #b5c8f2, inset -1px 0 0 #7b97e0;
+}
+
+.xp-window__title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  color: var(--c-title-text);
+  font: bold var(--fs-title) / 1 var(--font-title);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-shadow: 1px 1px 0 #0f1089;
+}
+
+.xp-window.is-inactive .xp-window__title {
+  color: var(--c-title-text-inactive);
+  text-shadow: none;
+}
+
+/* 24px hit area (WCAG 2.5.8) around the 16px icon; visually unchanged. */
+.xp-window__sysicon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin: 0 -3px;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.xp-window__sysicon:focus-visible {
+  outline: 1px dotted #fff;
+}
+
+.xp-window__caps {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+}
+
+.xp-cap {
+  display: grid;
+  place-items: center;
+  width: var(--cap-size);
+  height: var(--cap-size);
+  padding: 0;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  background: radial-gradient(circle at 85% 85%, #0045d8 0%, #2263d5 45%, #4479e4 62%, #8eaff0 85%, #e6eefc 100%);
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+.xp-cap svg {
+  width: calc(21px * var(--ctrl-scale));
+  height: calc(21px * var(--ctrl-scale));
+}
+
+.xp-cap:hover {
+  background: radial-gradient(circle at 85% 85%, #1a5cf0 0%, #3a7bf2 45%, #5f95f5 62%, #a9c7fa 85%, #f2f7ff 100%);
+}
+
+.xp-cap:active {
+  background: radial-gradient(circle at 15% 15%, #00379e 0%, #0b46b8 45%, #1d58cc 65%, #4777e0 100%);
+}
+
+.xp-cap--close {
+  background: radial-gradient(circle at 85% 85%, #b83a00 0%, #d9541c 45%, #e46d39 62%, #f5a888 85%, #fde8df 100%);
+}
+
+.xp-cap--close:hover {
+  background: radial-gradient(circle at 85% 85%, #d14400 0%, #ef6526 45%, #f5844f 62%, #fbbea4 85%, #fff2ec 100%);
+}
+
+.xp-cap--close:active {
+  background: radial-gradient(circle at 15% 15%, #8a2700 0%, #a93700 45%, #c0491a 70%, #d86a43 100%);
+}
+
+.xp-cap.is-disabled {
+  opacity: 0.55;
+}
+
+.xp-cap.is-disabled:hover,
+.xp-cap.is-disabled:active {
+  background: radial-gradient(circle at 85% 85%, #0045d8 0%, #2263d5 45%, #4479e4 62%, #8eaff0 85%, #e6eefc 100%);
+}
+
+.xp-window.is-inactive .xp-cap {
+  opacity: 0.85;
+}
+
+.xp-cap:focus-visible {
+  outline: 1px dotted #fff;
+  outline-offset: 1px;
+}
+
+.xp-window__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: var(--c-face);
+  overflow: hidden;
+}
+
+.xp-window__movesize {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  z-index: 5;
+  padding: 3px 6px;
+  border: 1px solid #000;
+  background: #ffffe1;
+  font-size: var(--fs-ui);
+}
+
+/* Eight resize handles along the frame. */
+.xp-resize {
+  position: absolute;
+  z-index: 4;
+  touch-action: none;
+}
+
+.xp-resize--n {
+  top: -3px;
+  left: 8px;
+  right: 8px;
+  height: 6px;
+  cursor: n-resize;
+}
+
+.xp-resize--s {
+  bottom: -3px;
+  left: 8px;
+  right: 8px;
+  height: 7px;
+  cursor: s-resize;
+}
+
+.xp-resize--e {
+  right: -3px;
+  top: 8px;
+  bottom: 8px;
+  width: 7px;
+  cursor: e-resize;
+}
+
+.xp-resize--w {
+  left: -3px;
+  top: 8px;
+  bottom: 8px;
+  width: 7px;
+  cursor: w-resize;
+}
+
+.xp-resize--ne {
+  right: -3px;
+  top: -3px;
+  width: 12px;
+  height: 12px;
+  cursor: ne-resize;
+}
+
+.xp-resize--nw {
+  left: -3px;
+  top: -3px;
+  width: 12px;
+  height: 12px;
+  cursor: nw-resize;
+}
+
+.xp-resize--se {
+  right: -3px;
+  bottom: -3px;
+  width: 14px;
+  height: 14px;
+  cursor: se-resize;
+}
+
+.xp-resize--sw {
+  left: -3px;
+  bottom: -3px;
+  width: 12px;
+  height: 12px;
+  cursor: sw-resize;
+}
+
+:root.high-contrast .xp-window.is-active .xp-window__title {
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* Forced-colors rules for windows live in forced.css (loaded last). */

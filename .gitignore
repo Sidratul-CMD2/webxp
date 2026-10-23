@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Test output
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+coverage/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor, OS and local tool settings
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+.claude/settings.local.json
+
+# Local working notes (kept on this machine, not published)
+CLAUDE.md
+MASTER_PROMPT.md
+docs/PROGRESS.md

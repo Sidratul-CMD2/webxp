@@ -1,0 +1,138 @@
+/* Loaded last so these rules win over equal-specificity theme rules. */
+/*
+ * Forced colors (Windows High Contrast): gradients are removed and colors are
+ * replaced by system colors, so selection, pressed and toggle states are
+ * mapped to system colors explicitly instead of relying on painted backgrounds.
+ */
+@media (forced-colors: active) {
+  .xp-icon__tint {
+    display: none;
+  }
+
+  .xp-check input,
+  .xp-radio input,
+  .xp-slider {
+    appearance: auto;
+    -webkit-appearance: auto;
+  }
+
+  :focus-visible {
+    outline: 2px solid Highlight;
+  }
+
+  .desktop-icon.is-selected .desktop-icon__label,
+  .content__items .item.is-selected .item__name,
+  .xp-tree__row.is-selected .xp-tree__text,
+  .xp-menu__item.is-active,
+  .xp-menubar__item.is-open,
+  .xp-menubar__item:hover,
+  .start-item.is-active,
+  .start-item:hover,
+  .taskmgr__list li.is-selected,
+  .organize__list li.is-selected,
+  .calendar td.is-today,
+  .help__topic.is-current {
+    forced-color-adjust: none;
+    background: Highlight;
+    color: HighlightText;
+  }
+
+  .xp-task,
+  .xp-start,
+  .xp-cap,
+  .xp-toolbtn-wrap,
+  .session-btn__orb,
+  .xp-tray__btn {
+    border: 1px solid ButtonText;
+  }
+
+  .xp-task.is-active,
+  .xp-toolbtn.is-pressed,
+  .xp-start.is-open {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+
+  .xp-cap svg [fill] {
+    fill: ButtonText;
+  }
+
+  .xp-cap svg [stroke] {
+    stroke: ButtonText;
+  }
+
+  /* Plus/minus boxes and arrow glyphs are drawn with backgrounds and borders. */
+  .xp-tree__toggle,
+  .xp-menu__arrow,
+  .sort-arrow,
+  .xp-toolbtn__arrow,
+  .xp-task__drop {
+    forced-color-adjust: none;
+  }
+
+  .xp-tree__toggle {
+    border-color: CanvasText;
+    background: Canvas;
+  }
+
+  .xp-tree__toggle::before {
+    content: '+';
+    display: block;
+    color: CanvasText;
+    font: bold 9px/7px Tahoma, Arial, sans-serif;
+    text-align: center;
+  }
+
+  .xp-tree__toggle.is-open::before {
+    content: '−';
+  }
+
+  .xp-menu__radio {
+    background: none;
+  }
+
+  .xp-menu__radio::before {
+    content: '●';
+    font-size: 8px;
+  }
+
+  .marquee {
+    border-color: Highlight;
+  }
+
+  /*
+   * Window title bars opt out of forcing with explicit system-color pairs:
+   * forced text gets a Canvas backplate, which would hide HighlightText.
+   */
+  .xp-window {
+    border: 2px solid CanvasText;
+  }
+
+  .xp-window__titlebar,
+  .xp-window__title {
+    forced-color-adjust: none;
+  }
+
+  .xp-window.is-active .xp-window__titlebar {
+    background: Highlight;
+  }
+
+  .xp-window.is-active .xp-window__title {
+    color: HighlightText;
+  }
+
+  .xp-window.is-inactive .xp-window__titlebar {
+    background: Canvas;
+    border-bottom: 1px solid CanvasText;
+  }
+
+  .xp-window.is-inactive .xp-window__title {
+    color: CanvasText;
+  }
+
+  .xp-window__titlebar .xp-cap,
+  .xp-window__titlebar .xp-window__sysicon {
+    forced-color-adjust: auto;
+    background: ButtonFace;
+  }
+}

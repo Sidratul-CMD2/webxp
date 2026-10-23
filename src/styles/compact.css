@@ -1,0 +1,167 @@
+/*
+ * Compact adaptation (documented web adaptation, not an XP feature): below
+ * ~700 CSS px — phones, or desktop browsers at 200%+ zoom — windows fill the
+ * workspace (handled in WindowFrame), panes stack, and controls get larger
+ * touch targets. Text is reflowed rather than scaled down.
+ */
+@media (max-width: 699.98px) {
+  :root {
+    --taskbar-h: 36px;
+  }
+
+  .xp-start {
+    width: 82px;
+  }
+
+  .xp-tasks {
+    padding-left: 4px;
+  }
+
+  .start-menu {
+    width: 100vw;
+  }
+
+  .start-menu__body {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .start-menu__left,
+  .start-menu__right {
+    overflow: visible;
+    border-left: 0;
+  }
+
+  .start-item {
+    min-height: 36px;
+  }
+
+  .explorer__body {
+    flex-direction: column;
+  }
+
+  .explorer__pane,
+  .explorer__pane--folders,
+  .explorer__pane--search {
+    width: auto;
+    max-height: 42%;
+    border-right: 0;
+    border-bottom: 1px solid #aca899;
+  }
+
+  .xp-toolbtn__label {
+    display: none;
+  }
+
+  .xp-menubar {
+    height: 28px;
+    overflow-x: auto;
+  }
+
+  .xp-menubar__item {
+    height: 26px;
+    padding: 0 9px;
+  }
+
+  .xp-menu__item {
+    min-height: 32px;
+  }
+
+  .xp-cap {
+    width: 26px;
+    height: 26px;
+  }
+
+  .xp-window__titlebar {
+    height: 32px;
+  }
+
+  .item--tiles {
+    width: 100%;
+  }
+
+  .help__toc {
+    display: none;
+  }
+
+  .help__search .xp-input {
+    max-width: none;
+    flex: 1;
+  }
+
+  .cp-categories {
+    grid-template-columns: 1fr;
+  }
+
+  .xp-dialog,
+  .msgbox {
+    min-width: 0;
+    width: calc(100vw - 16px) !important;
+    left: 8px !important;
+  }
+
+  .desktop-tab {
+    flex-direction: column;
+  }
+
+  .desktop-tab__side {
+    width: auto;
+  }
+
+  .datetime {
+    grid-template-columns: 1fr;
+  }
+
+  .calc__key {
+    width: 40px;
+    height: 34px;
+  }
+
+  .welcome__middle {
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .welcome__left {
+    align-items: center;
+    padding: 0;
+    text-align: center;
+    flex: none;
+  }
+
+  .welcome__divider {
+    display: none;
+  }
+
+  .welcome__right {
+    flex: none;
+    padding: 0;
+  }
+
+  .welcome__bottom p {
+    display: none;
+  }
+}
+
+/* Coarse pointers get larger hit regions without changing the layout. */
+@media (pointer: coarse) {
+  .xp-check input,
+  .xp-radio input {
+    width: 18px;
+    height: 18px;
+  }
+
+  .xp-tree__row {
+    height: 30px;
+  }
+
+  .xp-tree__toggle {
+    transform: scale(1.4);
+  }
+
+  .item--list,
+  .item--details {
+    height: 30px;
+  }
+}

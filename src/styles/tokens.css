@@ -1,0 +1,89 @@
+/*
+ * Blue Luna design tokens. Values are calibrated approximations of an English
+ * XP Professional SP2 configuration at 96 DPI, not authenticated metrics.
+ */
+:root {
+  --text-scale: 1;
+  --ctrl-scale: 1;
+
+  --font-ui: Tahoma, Arial, sans-serif;
+  --font-title: 'Trebuchet MS', Tahoma, Arial, sans-serif;
+  --fs-ui: calc(11px * var(--text-scale));
+  --fs-small: calc(10px * var(--text-scale));
+  --fs-title: calc(13px * var(--text-scale));
+  --fs-heading: calc(14px * var(--text-scale));
+
+  --c-face: #ece9d8;
+  --c-face-light: #f6f5ef;
+  --c-window: #ffffff;
+  --c-text: #000000;
+  --c-gray-text: #aca899;
+  --c-muted-text: #5f5f5f;
+  --c-select: #316ac5;
+  --c-select-text: #ffffff;
+  --c-select-inactive: #c9c6bc;
+  --c-input-border: #7f9db9;
+  --c-menu-border: #aca899;
+  --c-etch-dark: #c5c2b2;
+  --c-etch-light: #ffffff;
+  --c-hot: #f8b334;
+  --c-link: #215dc6;
+  --c-link-hover: #0b3a9c;
+  --c-focus: #000000;
+  --c-desktop-label: #ffffff;
+
+  --c-frame-active: #0b4fd9;
+  --c-frame-active-edge: #0019cf;
+  --c-frame-inactive: #7b97e0;
+  --c-frame-inactive-edge: #6b86d6;
+  --c-title-text: #ffffff;
+  --c-title-text-inactive: #10307e;
+
+  --title-h: calc(26px * var(--ctrl-scale));
+  --frame: 3px;
+  --cap-size: calc(21px * var(--ctrl-scale));
+  --menu-item-h: calc(18px * var(--ctrl-scale));
+  --taskbar-h: 30px;
+  --task-pane-w: 196px;
+
+  --z-desktop: 0;
+  --z-windows: 10;
+  --z-taskbar: 5000;
+  --z-menus: 6000;
+  --z-modal: 7000;
+  --z-balloon: 7500;
+  --z-session: 9000;
+  --z-tooltip: 9500;
+
+  --motion: 1;
+}
+
+:root.text-large {
+  --text-scale: 1.2;
+}
+
+:root.text-xlarge {
+  --text-scale: 1.4;
+}
+
+:root.larger-controls {
+  --ctrl-scale: 1.25;
+  --taskbar-h: 36px;
+}
+
+:root.reduce-motion {
+  --motion: 0;
+}
+
+/* Increased-contrast enhancement: the default theme already meets text contrast. */
+:root.high-contrast {
+  --c-gray-text: #6d6a5e;
+  --c-muted-text: #2a2a2a;
+  --c-input-border: #1d3f86;
+  --c-menu-border: #3c3a33;
+  --c-etch-dark: #6f6c60;
+  --c-link: #0b3a9c;
+  --c-link-hover: #001f6b;
+  --c-select: #0b3a9c;
+  --c-select-inactive: #b8b5a8;
+}

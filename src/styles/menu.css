@@ -1,0 +1,260 @@
+.menu-layer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-menus);
+  pointer-events: none;
+}
+
+.menu-layer > * {
+  pointer-events: auto;
+}
+
+.menu-catcher {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+}
+
+.xp-menu {
+  position: fixed;
+  z-index: 2;
+  min-width: 140px;
+  max-width: min(360px, 100vw);
+  padding: 2px;
+  border: 1px solid var(--c-menu-border);
+  background: #fff;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+  overflow-y: auto;
+  outline: none;
+  font-size: var(--fs-ui);
+  user-select: none;
+  animation: menu-fade calc(0.1s * var(--motion)) ease-out;
+}
+
+@keyframes menu-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.xp-menu__item {
+  display: flex;
+  align-items: center;
+  min-height: var(--menu-item-h);
+  padding: 0 6px 0 0;
+  white-space: nowrap;
+  cursor: default;
+  outline: none;
+}
+
+.xp-menu__item.is-active {
+  background: var(--c-select);
+  color: #fff;
+}
+
+.xp-menu__item.is-disabled {
+  color: var(--c-gray-text);
+}
+
+.xp-menu__item.is-active.is-disabled {
+  color: #c7c5ba;
+}
+
+.xp-menu__item.is-bold {
+  font-weight: bold;
+}
+
+.xp-menu__item:focus-visible {
+  outline: 1px dotted currentColor;
+  outline-offset: -2px;
+}
+
+.xp-menu__gutter {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 22px;
+  height: var(--menu-item-h);
+}
+
+.xp-menu--icons .xp-menu__gutter {
+  width: 26px;
+}
+
+.xp-menu__label {
+  flex: 1;
+  padding-right: 18px;
+}
+
+.xp-menu__shortcut {
+  padding-right: 14px;
+  padding-left: 12px;
+}
+
+.xp-menu__arrow {
+  width: 0;
+  height: 0;
+  margin-right: 2px;
+  border: 4px solid transparent;
+  border-left: 4px solid currentColor;
+  border-right: 0;
+}
+
+.xp-menu__check {
+  width: 9px;
+  height: 9px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9'%3E%3Cpath d='M1 4.5l2.3 2.3L8 2' fill='none' stroke='black' stroke-width='1.8'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.xp-menu__item.is-active .xp-menu__check {
+  filter: invert(1);
+}
+
+.xp-menu__radio {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.xp-menu__sep {
+  height: 1px;
+  margin: 3px 1px;
+  background: var(--c-menu-border);
+}
+
+.mnemonic.is-shown {
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------- menubar */
+
+.xp-menubar {
+  display: flex;
+  align-items: center;
+  flex: none;
+  /* 24px items meet WCAG 2.5.8 by size (XP's band was ~20px; documented deviation). */
+  height: calc(24px * var(--ctrl-scale));
+  padding: 0 2px;
+  background: var(--c-face);
+  border-bottom: 1px solid #d8d2bd;
+  box-shadow: 0 1px 0 #fff;
+}
+
+.xp-menubar__item {
+  height: calc(24px * var(--ctrl-scale));
+  padding: 0 6px;
+  border: 0;
+  background: none;
+  font-size: var(--fs-ui);
+  cursor: default;
+}
+
+.xp-menubar__item:hover,
+.xp-menubar__item.is-open {
+  background: var(--c-select);
+  color: #fff;
+}
+
+.xp-menubar__item:focus-visible {
+  background: var(--c-select);
+  color: #fff;
+  outline: 1px dotted #fff;
+  outline-offset: -2px;
+}
+
+/* ---------------------------------------------------------------- toolbar */
+
+.xp-toolbar {
+  display: flex;
+  align-items: center;
+  flex: none;
+  gap: 1px;
+  min-height: calc(38px * var(--ctrl-scale));
+  padding: 1px 4px;
+  background: var(--c-face);
+  border-bottom: 1px solid #d8d2bd;
+  box-shadow: 0 1px 0 #fff;
+}
+
+.xp-toolbar__sep {
+  width: 2px;
+  height: 30px;
+  margin: 0 3px;
+  border-left: 1px solid var(--c-etch-dark);
+  border-right: 1px solid var(--c-etch-light);
+}
+
+.xp-toolbtn-wrap {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.xp-toolbtn-wrap:hover:has(button:not(:disabled)) {
+  border-color: #c3c3b5;
+  background: linear-gradient(180deg, #fff 0%, #f3f2ec 70%, #e4e2d7 100%);
+}
+
+.xp-toolbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: calc(32px * var(--ctrl-scale));
+  padding: 2px 5px;
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  font-size: var(--fs-ui);
+  cursor: default;
+}
+
+.xp-toolbtn:disabled .xp-icon {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+
+.xp-toolbtn:disabled {
+  color: var(--c-gray-text);
+}
+
+.xp-toolbtn:active:not(:disabled),
+.xp-toolbtn.is-pressed {
+  background: linear-gradient(180deg, #dedcd2, #e8e6dc);
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.xp-toolbtn--drop {
+  min-width: 13px;
+  padding: 0 3px;
+}
+
+/* In XP size these arrows rely on WCAG 2.5.8's "equivalent" exception (the same
+   lists are in View > Go To); larger controls make them full-size targets. */
+:root.larger-controls .xp-toolbtn--drop {
+  min-width: 24px;
+}
+
+@media (pointer: coarse) {
+  .xp-toolbtn--drop {
+    min-width: 24px;
+  }
+}
+
+.xp-toolbtn-wrap.has-drop:hover:has(button:not(:disabled)) .xp-toolbtn--drop {
+  border-left: 1px solid #c3c3b5;
+}
+
+.xp-toolbtn__arrow {
+  width: 0;
+  height: 0;
+  border: 3px solid transparent;
+  border-top: 3px solid currentColor;
+  margin-top: 3px;
+}
+
+.xp-toolbtn:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -3px;
+}

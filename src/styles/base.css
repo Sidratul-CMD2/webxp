@@ -1,0 +1,488 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: var(--fs-ui);
+  color: var(--c-text);
+  background: #3a6ea5;
+  -webkit-text-size-adjust: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+img {
+  display: block;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/*
+ * Reduced motion removes animation outright. A short non-zero
+ * transition-duration would be wrong here: with the default
+ * transition-property of `all` it would make every style change transition.
+ */
+:root.reduce-motion *,
+:root.reduce-motion *::before,
+:root.reduce-motion *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* ---------------------------------------------------------------- icons */
+
+.xp-icon {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  vertical-align: middle;
+}
+
+.xp-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.xp-icon__tint {
+  position: absolute;
+  inset: 0;
+  background: var(--c-select);
+  opacity: 0.5;
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+}
+
+.xp-icon--ghosted img {
+  opacity: 0.5;
+}
+
+/* ---------------------------------------------------------------- focus */
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 1px dotted var(--c-focus);
+  outline-offset: -2px;
+}
+
+:root.high-contrast :focus-visible {
+  outline: 2px solid #000;
+  outline-offset: -2px;
+  box-shadow: 0 0 0 2px #ffd800;
+}
+
+/* ---------------------------------------------------------------- buttons */
+
+.xp-button {
+  position: relative;
+  min-width: calc(75px * var(--ctrl-scale));
+  min-height: calc(23px * var(--ctrl-scale));
+  padding: 0 12px;
+  font-size: var(--fs-ui);
+  line-height: 1;
+  color: #000;
+  border: 1px solid #003c74;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f3ee 30%, #ecebe6 86%, #d6d0c5 100%);
+  box-shadow: inset -1px -1px 0 #d6d0c5, inset 1px 1px 0 #ffffff;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.xp-button:hover:not(:disabled) {
+  box-shadow: inset 1px 1px 0 #fff0cf, inset -1px -1px 0 #f5c876, inset 2px 2px 0 #fcd28c, inset -2px -2px 0 #e5a01a;
+}
+
+.xp-button:focus-visible,
+.xp-button.is-default {
+  box-shadow: inset 1px 1px 0 #cee7ff, inset -1px -1px 0 #98b8ea, inset 2px 2px 0 #bcd4f6, inset -2px -2px 0 #89ade4;
+}
+
+.xp-button:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+}
+
+.xp-button:active:not(:disabled),
+.xp-button.is-pressed {
+  background: linear-gradient(180deg, #cdcac3 0%, #e3e2da 15%, #e5e4de 85%, #f2f1ec 100%);
+  box-shadow: none;
+}
+
+.xp-button:disabled {
+  color: var(--c-gray-text);
+  border-color: #c9c7ba;
+  background: #f5f4ea;
+  box-shadow: none;
+}
+
+/* Link-styled command buttons used in task panes and pages. */
+.link-button {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--c-link);
+  text-align: left;
+  cursor: pointer;
+}
+
+.link-button:hover:not(:disabled) {
+  color: var(--c-link-hover);
+  text-decoration: underline;
+}
+
+.link-button:disabled {
+  color: var(--c-gray-text);
+  cursor: default;
+}
+
+/* ---------------------------------------------------------------- text inputs */
+
+.xp-input,
+.xp-select {
+  height: calc(21px * var(--ctrl-scale));
+  padding: 2px 3px;
+  border: 1px solid var(--c-input-border);
+  border-radius: 0;
+  background: #fff;
+  font-size: var(--fs-ui);
+}
+
+.xp-input:focus-visible,
+.xp-select:focus-visible {
+  outline: 1px solid var(--c-input-border);
+  outline-offset: 0;
+}
+
+.xp-input:disabled,
+.xp-select:disabled {
+  background: var(--c-face);
+  color: var(--c-gray-text);
+}
+
+.xp-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 20px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='19'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23e4ecfd'/%3E%3Cstop offset='1' stop-color='%23b4c8f6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='.5' y='.5' width='16' height='18' rx='2' fill='url(%23g)' stroke='%23b9cbf3'/%3E%3Cpath d='M5 8l3.5 3.5L12 8' fill='none' stroke='%234d6185' stroke-width='2'/%3E%3C/svg%3E")
+      right 1px center / 17px 17px no-repeat,
+    #fff;
+}
+
+/* ---------------------------------------------------------------- checkbox & radio */
+
+.xp-check,
+.xp-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: calc(17px * var(--ctrl-scale));
+  user-select: none;
+}
+
+.xp-check input,
+.xp-radio input {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: none;
+  width: calc(13px * var(--ctrl-scale));
+  height: calc(13px * var(--ctrl-scale));
+  margin: 0;
+  border: 1px solid #1c5180;
+  background: linear-gradient(135deg, #dcdcd7 0%, #ffffff 100%);
+}
+
+.xp-radio input {
+  border-radius: 50%;
+}
+
+.xp-check input:hover:not(:disabled),
+.xp-radio input:hover:not(:disabled) {
+  box-shadow: inset 0 0 0 1px #fde09a, inset 0 0 0 2px #f8b636;
+}
+
+.xp-check input:checked {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 11'%3E%3Cpath d='M2 5.5l2.3 2.4L9 3' fill='none' stroke='%2321a121' stroke-width='2'/%3E%3C/svg%3E")
+      center / 100% 100% no-repeat,
+    linear-gradient(135deg, #dcdcd7 0%, #ffffff 100%);
+}
+
+.xp-radio input:checked {
+  background:
+    radial-gradient(circle at 45% 40%, #8be08b 0, #2fb32f 30%, #208e20 45%, transparent 48%),
+    linear-gradient(135deg, #dcdcd7 0%, #ffffff 100%);
+}
+
+.xp-check input:disabled,
+.xp-radio input:disabled {
+  border-color: #cac8bb;
+  background-color: #fff;
+}
+
+.xp-check:has(input:disabled),
+.xp-radio:has(input:disabled) {
+  color: var(--c-gray-text);
+}
+
+.xp-check input:focus-visible,
+.xp-radio input:focus-visible {
+  outline: none;
+}
+
+.xp-check:has(input:focus-visible) span,
+.xp-radio:has(input:focus-visible) span {
+  outline: 1px dotted #000;
+  outline-offset: 1px;
+}
+
+/* ---------------------------------------------------------------- group box */
+
+.xp-group {
+  margin: 0 0 8px;
+  padding: 6px 8px 8px;
+  border: 1px solid #d0d0bf;
+  border-radius: 4px;
+}
+
+.xp-group > legend {
+  padding: 0 3px;
+  color: #0046d5;
+}
+
+/* ---------------------------------------------------------------- slider */
+
+.xp-slider {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 22px;
+  background: transparent;
+}
+
+.xp-slider::-webkit-slider-runnable-track {
+  height: 3px;
+  border-top: 1px solid #9d9c99;
+  border-bottom: 1px solid #fff;
+  background: #ecebe4;
+}
+
+.xp-slider::-moz-range-track {
+  height: 3px;
+  border-top: 1px solid #9d9c99;
+  border-bottom: 1px solid #fff;
+  background: #ecebe4;
+}
+
+.xp-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 11px;
+  height: 21px;
+  margin-top: -10px;
+  border: 1px solid #1c5180;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #f6f6f3 0%, #e2e0d6 100%);
+  box-shadow: inset 0 -3px 0 #21a121;
+}
+
+.xp-slider::-moz-range-thumb {
+  width: 11px;
+  height: 21px;
+  border: 1px solid #1c5180;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #f6f6f3 0%, #e2e0d6 100%);
+  box-shadow: inset 0 -3px 0 #21a121;
+}
+
+.xp-slider:focus-visible {
+  outline: 1px dotted #000;
+}
+
+.xp-slider--vertical {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  width: 22px;
+  height: 90px;
+}
+
+.xp-slider--vertical::-webkit-slider-runnable-track {
+  width: 3px;
+  height: auto;
+  border: 0;
+  border-left: 1px solid #9d9c99;
+  border-right: 1px solid #fff;
+}
+
+.xp-slider--vertical::-webkit-slider-thumb {
+  width: 21px;
+  height: 11px;
+  margin-top: 0;
+  margin-left: -10px;
+  box-shadow: inset -3px 0 0 #21a121;
+}
+
+/* ---------------------------------------------------------------- tabs */
+
+.xp-tabs {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.xp-tablist {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.xp-tab {
+  position: relative;
+  margin: 2px -1px -1px 0;
+  padding: 3px 7px 2px;
+  border: 1px solid #919b9c;
+  border-bottom: 0;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f3ee 60%, #ecebe6 100%);
+  font-size: var(--fs-ui);
+  cursor: default;
+}
+
+.xp-tab:hover {
+  box-shadow: inset 0 2px 0 #ffc83c;
+}
+
+.xp-tab[aria-selected='true'] {
+  z-index: 2;
+  margin-top: 0;
+  padding-bottom: 4px;
+  background: #fcfcfe;
+  box-shadow: inset 0 2px 0 #e68b2c, inset 0 3px 0 #ffc83c;
+}
+
+.xp-tab:focus-visible {
+  outline-offset: -4px;
+}
+
+.xp-tabpanel {
+  flex: 1;
+  min-height: 0;
+  padding: 10px 9px;
+  border: 1px solid #919b9c;
+  background: #fcfcfe;
+  box-shadow: 1px 1px 0 #d0cfc8;
+  overflow: auto;
+}
+
+/* ---------------------------------------------------------------- separators */
+
+.xp-hr {
+  height: 2px;
+  margin: 6px 0;
+  border: 0;
+  border-top: 1px solid var(--c-etch-dark);
+  border-bottom: 1px solid var(--c-etch-light);
+}
+
+/* ---------------------------------------------------------------- Luna scrollbars */
+
+@supports selector(::-webkit-scrollbar) {
+  .xp-scroll::-webkit-scrollbar {
+    width: 17px;
+    height: 17px;
+  }
+
+  .xp-scroll::-webkit-scrollbar-track {
+    background: linear-gradient(90deg, #f3f1ec 0%, #fefefe 100%);
+  }
+
+  .xp-scroll::-webkit-scrollbar-track:horizontal {
+    background: linear-gradient(180deg, #f3f1ec 0%, #fefefe 100%);
+  }
+
+  .xp-scroll::-webkit-scrollbar-thumb {
+    border: 1px solid #fff;
+    border-radius: 3px;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M0 1h7M0 3h7M0 5h7M0 7h7' stroke='%23eef4fe' stroke-width='1'/%3E%3Cpath d='M1 2h7M1 4h7M1 6h7' stroke='%238cb0f8' stroke-width='1'/%3E%3C/svg%3E")
+        center no-repeat,
+      linear-gradient(90deg, #c9d7fc 0%, #bbcdf8 50%, #a9bef5 100%);
+    box-shadow: inset 0 0 0 1px #9eb3e8;
+  }
+
+  .xp-scroll::-webkit-scrollbar-thumb:horizontal {
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M1 0v7M3 0v7M5 0v7M7 0v7' stroke='%23eef4fe' stroke-width='1'/%3E%3Cpath d='M2 1v7M4 1v7M6 1v7' stroke='%238cb0f8' stroke-width='1'/%3E%3C/svg%3E")
+        center no-repeat,
+      linear-gradient(180deg, #c9d7fc 0%, #bbcdf8 50%, #a9bef5 100%);
+  }
+
+  .xp-scroll::-webkit-scrollbar-button:single-button {
+    display: block;
+    width: 17px;
+    height: 17px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    background-color: #c9d7fc;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: inset 0 0 0 1px #9eb3e8;
+  }
+
+  .xp-scroll::-webkit-scrollbar-button:single-button:vertical:decrement {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='6'%3E%3Cpath d='M1 5l3.5-3.5L8 5' fill='none' stroke='%234d6185' stroke-width='2'/%3E%3C/svg%3E");
+  }
+
+  .xp-scroll::-webkit-scrollbar-button:single-button:vertical:increment {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='6'%3E%3Cpath d='M1 1l3.5 3.5L8 1' fill='none' stroke='%234d6185' stroke-width='2'/%3E%3C/svg%3E");
+  }
+
+  .xp-scroll::-webkit-scrollbar-button:single-button:horizontal:decrement {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='9'%3E%3Cpath d='M5 1L1.5 4.5 5 8' fill='none' stroke='%234d6185' stroke-width='2'/%3E%3C/svg%3E");
+  }
+
+  .xp-scroll::-webkit-scrollbar-button:single-button:horizontal:increment {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='9'%3E%3Cpath d='M1 1l3.5 3.5L1 8' fill='none' stroke='%234d6185' stroke-width='2'/%3E%3C/svg%3E");
+  }
+
+  .xp-scroll::-webkit-scrollbar-corner {
+    background: var(--c-face);
+  }
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .xp-scroll {
+    scrollbar-color: #b8cbf8 #f3f1ec;
+  }
+}
